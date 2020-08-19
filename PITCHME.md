@@ -670,7 +670,7 @@ The downside to virtualization is that performance typically suffers with larger
 * Oracle Data Service Integrator
 * Starburst Presto
 
----
+---?image=presentation/assets/background/connections.jpg&size=cover&opacity=20
 
 ### PolyBase
 
@@ -678,7 +678,7 @@ SQL Server 2019 extends a Microsoft technology called PolyBase, which allows you
 
 For more, go to <a href="https://csmore.info/on/polybase">https://csmore.info/on/polybase</a>.
 
----?image=presentation/assets/background/connections.jpg&size=cover&opacity=20
+---
 
 ### PolyBase and ELT
 
