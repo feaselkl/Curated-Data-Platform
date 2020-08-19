@@ -54,7 +54,7 @@ My goals in this talk:
 * Cover relevant cloud options in AWS and Azure.
 * Describe technologies for integrating everything together.
 
----
+---?image=presentation/assets/background/caution.jpg&size=cover&opacity=20
 
 ### A Brief Warning
 
@@ -76,7 +76,7 @@ Often times, "the platform you have" is a perfectly reasonable answer for "Which
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/scale.jpg&size=cover&opacity=20
 
 ### Our Scenario
 
@@ -90,7 +90,7 @@ Our IT team is looking to modernize several key systems in the organization and 
 
 <img src="presentation/assets/image/Current%20Architecture.png" /><br />
 
----
+---?image=presentation/assets/background/ugh.jpg&size=cover&opacity=20
 
 ### Pain Points
 
@@ -102,7 +102,7 @@ Our current system has worked, but we're experiencing some pain points:
 * No support for the data science team.
 * Log review is painful for IT.
 
----
+---?image=presentation/assets/background/telephones.jpg&size=cover&opacity=20
 
 ### The Upshot
 
@@ -123,7 +123,7 @@ Not all of these technologies are necessary and we can certainly make substituti
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -132,7 +132,7 @@ Not all of these technologies are necessary and we can certainly make substituti
 * It's okay for some reports to update nightly rather than real-time.  We also need a real-time app AP and AR can use for their day-to-day work.
 * Performance is less important than correctness, but still a factor.
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -201,7 +201,7 @@ There are also technologies dedicated to extending beyond relational OLAP, such 
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -209,7 +209,7 @@ There are also technologies dedicated to extending beyond relational OLAP, such 
 * Consistency is not critical.  Product data can be out of date or show different results between regions for a minute or two.
 * We still want a single source of truth for product data, including quantity on hand, price, etc.
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -231,7 +231,7 @@ There are also technologies dedicated to extending beyond relational OLAP, such 
 
 @cloud[width=700](presentation/assets/cloud/04_DocumentPlayers.py)
 
----
+---?image=presentation/assets/background/monkey-thinking.jpg&size=cover&opacity=20
 
 ### Is OLTP Necessary Here?
 
@@ -261,7 +261,7 @@ Long answer:  an OLTP database may be a good choice for a busy product catalog, 
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -269,7 +269,7 @@ Long answer:  an OLTP database may be a good choice for a busy product catalog, 
 * Many of the site assets are static, but there are several dynamic sections:  shopping carts, order and invoice history, etc.
 * Consistency is critical for some things (e.g., orders) but less so for others (e.g., product description, order history).
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -297,7 +297,7 @@ Long answer:  an OLTP database may be a good choice for a busy product catalog, 
 
 @cloud[height=500](presentation/assets/cloud/05_WebPlayers.py)
 
----
+---?image=presentation/assets/background/shopping_carts.jpg&size=cover&opacity=20
 
 ### A Note on Shopping Carts
 
@@ -327,7 +327,7 @@ If you do get to that point, a key-value store or document database can work wel
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -335,7 +335,7 @@ If you do get to that point, a key-value store or document database can work wel
 * Need to collect "multi-structured" data like text files, as well as "unstructured" data like audio and video clips.
 * Need to store a comprehensive history of data changes over time.
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -345,7 +345,7 @@ If you do get to that point, a key-value store or document database can work wel
 * Distributed quasi-relational database (OLAP)
 * Graph databases
 
----
+---?image=presentation/assets/background/elephant1.jpg&size=cover&opacity=20
 
 ### Apache Hadoop
 
@@ -367,7 +367,7 @@ The MapReduce library has fallen out of vogue along with pure Hadoop clusters, b
 
 @cloud[height=500](presentation/assets/cloud/06_HadoopPlayers.py)
 
----
+---?image=presentation/assets/background/sparkler.jpg&size=cover&opacity=20
 
 ### Apache Spark
 
@@ -375,7 +375,7 @@ Spark provides in-memory cluster computing, avoiding MapReduce's reliance on hea
 
 Spark ties into several major cloud technologies, including Databricks, HDInsight / ElasticMapReduce, and Azure Data Factory / AWS Glue.
 
----
+---?image=presentation/assets/background/lake.jpg&size=cover&opacity=20
 
 ### The Data Lake
 
@@ -383,7 +383,7 @@ HDFS opened up the possibility of massive, distributed storage of data, includin
 
 The data lake provides a central location for historical storage of a broad array of company data for the purpose of data science and machine learning activities.
 
----
+---?image=presentation/assets/background/warehouse-water.jpg&size=cover&opacity=20
 
 ### The Data Lakehouse
 
@@ -403,13 +403,13 @@ Databricks has coined the term Lakehouse to represent the combination of data wa
 
 @cloud[height=500](presentation/assets/cloud/06b_ModernDWPlayers.py)
 
----
+---?image=presentation/assets/background/complexity.jpg&size=cover&opacity=20
 
 ### Graph Databases
 
 Graph databases have a niche in the analytics space.  Graph databases combine **nodes** (which represent entities) and **edges** (which represent connections between entities).
 
----
+---?image=presentation/assets/background/jump.jpg&size=cover&opacity=20
 
 ### Graph Databases' Wheelhouse
 
@@ -418,7 +418,7 @@ Graph databases have a niche in the analytics space.  Graph databases combine **
 3. Modeling fluid relationships between entities.
 4. Laying out network maps and other complex topologies.
 
----
+---?image=presentation/assets/background/surfer-crash.jpg&size=cover&opacity=20
 
 ### The Problem with Graph Databases
 
@@ -470,7 +470,7 @@ The second-biggest problem with graph databases is that there is no common graph
 7. Logging and Metrics
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -478,7 +478,7 @@ The second-biggest problem with graph databases is that there is no common graph
 * Separate producers of messages from consumers of messages.
 * Handle large (potentially very large) numbers of messages.
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -495,7 +495,7 @@ Message brokers receive messages from **producers** and send messages to **consu
 
 ![](presentation/assets/image/Kafka_Overall.png)
 
----
+---?image=presentation/assets/background/stream.jpg&size=cover&opacity=20
 
 ### Stream Processing
 
@@ -569,7 +569,7 @@ Stream processing handles messages one at a time (e.g., Kafka Streams, Flink) or
 7. **Logging and Metrics**
 8. Tying it All Together
 
----
+---?image=presentation/assets/background/binders.jpg&size=cover&opacity=20
 
 ### Key Requirements
 
@@ -577,7 +577,7 @@ Stream processing handles messages one at a time (e.g., Kafka Streams, Flink) or
 * Sometimes logs will follow a specific format, but no guarantee all records have the same shape.
 * Queries are often "What happened at this time?" or "What errors do we see?"
 
----
+---?image=presentation/assets/background/circuitboards.jpg&size=cover&opacity=20
 
 ### Key Technologies
 
@@ -587,7 +587,7 @@ Stream processing handles messages one at a time (e.g., Kafka Streams, Flink) or
 	- Log querying and visualization:  Kibana
 * Standalone logging services
 
----
+---?image=presentation/assets/background/skeleton-thinking.jpg&size=cover&opacity=20
 
 ### Roll Your Own or Purchase?
 
@@ -623,7 +623,7 @@ On the other side, open source products exist as well and can be quite powerful 
 7. Logging and Metrics
 8. **Tying it All Together**
 
----
+---?image=presentation/assets/background/you-are-here.jpg&size=cover&opacity=20
 
 ### Data on the Move
 
@@ -631,7 +631,7 @@ As soon as you have two data platform systems, you introduce the need to combine
 
 There are three major approaches to data movement:  ETL, ELT, and Data Virtualization.
 
----
+---?image=presentation/assets/background/sprial-staircase.jpg&size=cover&opacity=20
 
 ### ETL to ELT
 
@@ -678,7 +678,7 @@ SQL Server 2019 extends a Microsoft technology called PolyBase, which allows you
 
 For more, go to <a href="https://csmore.info/on/polybase">https://csmore.info/on/polybase</a>.
 
----
+---?image=presentation/assets/background/connections.jpg&size=cover&opacity=20
 
 ### PolyBase and ELT
 
