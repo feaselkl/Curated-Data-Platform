@@ -631,7 +631,7 @@ As soon as you have two data platform systems, you introduce the need to combine
 
 There are three major approaches to data movement:  ETL, ELT, and Data Virtualization.
 
----?image=presentation/assets/background/sprial-staircase.jpg&size=cover&opacity=20
+---?image=presentation/assets/background/spiral-staircase.jpg&size=cover&opacity=20
 
 ### ETL to ELT
 
