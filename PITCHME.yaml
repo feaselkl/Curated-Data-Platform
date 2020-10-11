@@ -16,3 +16,4 @@ footnote : "The Curated Data Platform| https://csmore.info/on/cdp"
 mathjax : TeX-MML-AM_HTMLorMML-full
 code-line-numbers : true
 eager-loading : true
+gitpitch : 3.0

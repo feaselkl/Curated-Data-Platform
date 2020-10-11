@@ -3,7 +3,7 @@
 </style>
 
 ## The Curated Data Platform
-### Last Revision:  August 2020
+### Last Revision:  November 2020
 
 <a href="http://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)<br />
 <a href="http://csmore.info/on/cdp">http://CSmore.info/on/cdp</a>
@@ -137,7 +137,7 @@ Not all of these technologies are necessary and we can certainly make substituti
 ### Key Technologies
 
 * Relational database (OLTP -- On-Line Transactional Processing) for storing financial data.
-* Relational database (OLAP -- On-Line Analytial Processing) for connectivity to Excel and reviewing results.
+* Relational database (OLAP -- On-Line Analytical Processing) for connectivity to Excel and reviewing results.
 
 ---
 
@@ -158,7 +158,7 @@ Not all of these technologies are necessary and we can certainly make substituti
 
 * Specifically, the Kimball model for warehousing.
 * The data must be correct but may be delayed.  We can use an ETL process to populate the warehouse.
-* Warehouses may be distributed across the globe to meet the performance needs of analysts.  More commonly, we have one warehouse.
+* Data marts may be distributed across the globe to meet the performance needs of analysts, along with a central data warehouse to store the full set of data.
 * Excel tools like Power Query are designed to work with Kimball-style warehouses.
 
 ---

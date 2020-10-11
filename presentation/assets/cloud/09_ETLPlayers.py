@@ -3,7 +3,7 @@ from diagrams.onprem.database import Mssql
 from diagrams.onprem.analytics import Hadoop, Hive, Beam
 from diagrams.onprem.workflow import Airflow, Nifi
 from diagrams.onprem.etl import Embulk
-from diagrams.oci.storage import Datatransfer, DatatransferGrey
+from diagrams.oci.storage import DataTransfer
 from diagrams.azure.analytics import Databricks, DataFactories
 from diagrams.azure.database import SQLDatawarehouse
 from diagrams.azure.compute import FunctionApps
@@ -30,9 +30,9 @@ with Diagram("", show=False, direction="TB", node_attr=node_attr):
             pig - [hive] - nifi
         with Cluster("Classic ETL", graph_attr=graph_attr):
             sql = Mssql("\nSSIS")
-            abinitio = DatatransferGrey("\nAb Initio")
+            abinitio = DataTransfer("\nAb Initio")
             embulk = Embulk("\nEmbulk")
-            informatica = Datatransfer("\nInformatica")
+            informatica = DataTransfer("\nInformatica")
             embulk - [abinitio]
             sql - [informatica]
 

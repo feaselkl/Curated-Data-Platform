@@ -1,8 +1,9 @@
 from diagrams import Cluster, Diagram, Edge
-from diagrams.onprem.logging import Fluentd, Logstash, Loki
-from diagrams.onprem.search import Elasticsearch, Solr
+from diagrams.onprem.logging import Fluentd, Loki
+from diagrams.elastic.elasticsearch import Logstash, Elasticsearch, Kibana
+from diagrams.onprem.search import Solr
 from diagrams.onprem.database import Influxdb, Mongodb
-from diagrams.onprem.monitoring import Datadog, Grafana, Kibana, Prometheus, Thanos, Splunk
+from diagrams.onprem.monitoring import Datadog, Grafana,  Prometheus, Thanos, Splunk
 from diagrams.azure.analytics import LogAnalyticsWorkspaces
 from diagrams.aws.management import Cloudwatch
 
