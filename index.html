@@ -1,0 +1,815 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Catallaxy Services | The Curated Data Platform</title>
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="../WebsiteAssets/mods.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h2>The Curated Data Platform</h2>
+					<h3>Last Revision:  January 2021</h3>
+					
+					<a href="https://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)<br />
+					<a href="http://CSmore.info/on/cdp">http://CSmore.info/on/cdp</a>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Who Am I?  What Am I Doing Here?</h3>
+					<div class="container">
+						<div class="col">
+							<table class="whoami">
+								<tr>
+									<td><a href="https://csmore.info"><img src="../WebsiteAssets/Logo.png" height="100" /></a></td>
+									<td nowrap><a href="https://csmore.info">Catallaxy Services</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://curatedsql.com"><img src="../WebsiteAssets/CuratedSQLLogo.png" height="100" /></a></td>
+									<td nowrap><a href="https://curatedsql.com">Curated SQL</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://www.apress.com/us/book/9781484254608"><img src="../WebsiteAssets/PolyBaseRevealed.png" height="120" /></a></td>
+									<td nowrap><a href="https://www.apress.com/us/book/9781484254608">PolyBase Revealed</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col">
+							<a href="http://www.twitter.com/feaselkl"><img src="../WebsiteAssets/HeadShot.jpg" height="358" width="315" /></a>
+							<br />
+							<a href="http://www.twitter.com/feaselkl">@feaselkl</a>
+						</div>					
+					</div>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/questions.jpg" data-background-opacity="0.2">
+					<h3>Which data platform is right for me?</h3>
+					
+					<p>The website <a href="https://db-engines.com/en/ranking">DB-Engines</a> keeps track of over 350 different data platform technologies, ranging from relational databases to data warehouses, document databases, key-value stores, search engines, time series, graph databases, and more.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/motivation.jpg" data-background-opacity="0.2">
+					<h3>Motivation</h3>
+					
+					<p>My goals in this talk:</p>
+					
+					<ul>
+						<li>Walk you through several scenarios.</li>
+						<li>Discuss when different data storage types make sense.</li>
+						<li>Cover relevant cloud options in AWS and Azure.</li>
+						<li>Describe technologies for integrating everything together.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/caution.jpg" data-background-opacity="0.2">
+					<h3>A Brief Warning</h3>
+					
+					<p>This talk covers data platform technologies as a broad swath and does not spend much time covering the merits of individual products with respect to one another.</p>
+
+					<p>Often times, "the platform you have" is a perfectly reasonable answer for "Which platform should I choose?"  Understanding how (and when!) to use these platforms is my goal for today.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li class="active">An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/scale.jpg" data-background-opacity="0.2">
+					<h3>Our Scenario</h3>
+					
+					<p>We work for Catallaxy Widgets, a major retailer of fine widgets and widget accessories.  Our holdings include hundreds of stores around the world, as well as a major website.</p>
+
+					<p>Our IT team is looking to modernize several key systems in the organization and asked for our guidance.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>The Current System</h3>
+					
+					<img src="presentation/assets/image/Current%20Architecture.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/ugh.jpg" data-background-opacity="0.2">
+					<h3>Pain Points</h3>
+					
+					<p>Our current system has worked, but we're experiencing some pain points:</p>
+
+					<ul>
+						<li>Finances in Excel spreadsheets is clunky.</li>
+						<li>Customers experience slowness searching through our vast product catalog.</li>
+						<li>Customers experience slowness navigating through our website and making orders.</li>
+						<li>No support for the data science team.</li>
+						<li>Log review is painful for IT.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/telephones.jpg" data-background-opacity="0.2">
+					<h3>The Upshot</h3>
+					
+					<p>For each of these problem domains, we will look at data platform technologies well-suited for the domain.</p>
+
+					<p>Not all of these technologies are necessary and we can certainly make substitutions, but these are solid choices for the job.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li class="active">Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Data MUST be correct.  Eventual consistency and even a few missed records won't work for us.</li>
+						<li>Systems should be easy for non-IT staff to access, ideally within Excel.</li>
+						<li>It's okay for some reports to update nightly rather than real-time.  We also need a real-time app AP and AR can use for their day-to-day work.</li>
+						<li>Performance is less important than correctness, but still a factor.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>Relational database (OLTP -- On-Line Transactional Processing) for storing financial data.</li>
+						<li>Relational database (OLAP -- On-Line Analytical Processing) for connectivity to Excel and reviewing results.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Why OLTP?</h3>
+					
+					<ul>
+						<li>Non-distributed, relational database because the data must be correct for everybody, and ACID compliance helps us considerably.</li>
+						<li>Performance will generally be good, though analysts far from the data center may need to deal with slower queries.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  OLTP</h3>
+					
+					<img src="presentation/assets/image/02_OLTPPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Why OLAP?</h3>
+					
+					<ul>
+						<li>Specifically, the Kimball model for warehousing.</li>
+						<li>The data must be correct but may be delayed.  We can use an ETL process to populate the warehouse.</li>
+						<li>Data marts may be distributed across the globe to meet the performance needs of analysts, along with a central data warehouse to store the full set of data.</li>
+						<li>Excel tools like Power Query are designed to work with Kimball-style warehouses.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  OLAP</h3>
+					
+					<img src="presentation/assets/image/03_OLAPPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>OLTP + OLAP</h3>
+					
+					<p>Relational databases can serve as either OLTP or OLAP--these are database designs rather than distinct technologies.</p>
+
+					<p>There are also technologies dedicated to extending beyond relational OLAP, such as SQL Server Analysis Services and Oracle Essbase.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/Datawarehouse_reference_architecture.jpg" height="400" /><br />
+
+					<p><a href="https://commons.wikimedia.org/wiki/File:Datawarehouse_reference_architecture.jpg">Data Warehouse reference architecture, Wikimedia</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li class="active">Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Performance is critical.  As a global e-commerce company, we need fast response times across the globe.</li>
+						<li>Consistency is not critical.  Product data can be out of date or show different results between regions for a minute or two.</li>
+						<li>We still want a single source of truth for product data, including quantity on hand, price, etc.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>Document database for "republishing" OLTP data and maximizing performance.</li>
+						<li>(Optional) Relational database (OLTP) to act as the single source of truth.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What is a Document DB?</h3>
+					
+					<ul>
+						<li>Key-value store</li>
+						<li>The value is a complex document, often JSON (or JSON-like)</li>
+						<li>The value may be nested:  <code>Product</code> has <code>Images</code>, <code>PriceChanges</code>, and <code>StoreAvailability</code> as well as attributes like <code>Price</code>, <code>Title</code>, and <code>Brand</code></li>
+						<li>Data retrieval is typically one record at a time, but allows for scans of data</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Document DBs</h3>
+					
+					<img src="presentation/assets/image/04_DocumentPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/monkey-thinking.jpg" data-background-opacity="0.2">
+					<h3>Is OLTP Necessary Here?</h3>
+					
+					<p>Short answer:  no.</p>
+
+					<p>Long answer:  an OLTP database may be a good choice for a busy product catalog, as it gives you a correct source system and it allows you to "true up" the document database(s).</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/product-catalog.png" height="350" /><br />
+
+					<p><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/use-cases#retail-and-marketing">Cosmos DB Use Case:  Retail and marketing</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li class="active">Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Performance is critical.  As a global e-commerce company, we need fast response times across the globe.</li>
+						<li>Many of the site assets are static, but there are several dynamic sections:  shopping carts, order and invoice history, etc.</li>
+						<li>Consistency is critical for some things (e.g., orders) but less so for others (e.g., product description, order history).</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>In-memory key-value caching for fast lookups.</li>
+						<li>Simple storage for static content.</li>
+						<li>Relational database (OLTP) to act as the single source of truth.</li>
+						<li>(Optional) Document database for "republishing" OLTP data and maximizing performance.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4" data-markdown>
+					<textarea data-template>
+					### Cache versus Document DB
+
+					| | Cache     | Document DB |
+					| - | ------    | ----------  |
+					| Structure | Key-value | Key-value   |
+					| Lookup | Singleton | One to many |
+					| Resident | In Memory | On Disk |
+					| Structure | Often simple | Simple to complex |
+					| Size | Small | Small to medium |
+					| Best Use | Dictionary | Serialized Object |
+					</textarea>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Websites</h3>
+					
+					<img src="presentation/assets/image/05_WebPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/shopping_carts.jpg" data-background-opacity="0.2">
+					<h3>A Note on Shopping Carts</h3>
+					
+					<p>I'd recommend using an OLTP system for the shopping cart unless your company is enormous like Amazon.</p>
+
+					<p>If you do get to that point, a key-value store or document database can work well for the shopping cart, but be sure to have post-order mechanisms to ensure that products are available, prices were correct, the method of billing was successful, etc.  Use message brokers to split apart these systems.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/scalable-web-app.png" height="350" />
+
+					<p><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app">Scalable web application</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li class="active">Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Need to collect more data than is available in relational databases or even data warehouses.</li>
+						<li>Need to collect "multi-structured" data like text files, as well as "unstructured" data like audio and video clips.</li>
+						<li>Need to store a comprehensive history of data changes over time.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>Apache Hadoop</li>
+						<li>Apache Spark</li>
+						<li>Data Lake storage</li>
+						<li>Distributed quasi-relational database (OLAP)</li>
+						<li>Graph databases</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/elephant1.jpg" data-background-opacity="0.2">
+					<h3>Apache Hadoop</h3>
+					
+					<p>Hadoop is a massive, distributed, batch processing system.  Hadoop itself has three key components:  the Hadoop Distributed File System (HDFS), the MapReduce library, and the resource allocation engine Yet Another Resource Negotiator (YARN).</p>
+
+					<p>The MapReduce library has fallen out of vogue along with pure Hadoop clusters, but the Hadoop ecosystem is thriving, especially Apache Spark.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Hadoop Ecosystem</h3>
+					
+					<img src="presentation/assets/image/product-catalog.png" height="350" /><br />
+
+					<p><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/use-cases#retail-and-marketing">Cosmos DB Use Case:  Retail and marketing</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Hadoop</h3>
+					
+					<img src="presentation/assets/image/06_HadoopPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/sparkler.jpg" data-background-opacity="0.2">
+					<h3>Apache Spark</h3>
+					
+					<p>Spark provides in-memory cluster computing, avoiding MapReduce's reliance on heavy I/O use.</p>
+
+					<p>Spark ties into several major cloud technologies, including Databricks, HDInsight / ElasticMapReduce, and Azure Data Factory / AWS Glue.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/lake.jpg" data-background-opacity="0.2">
+					<h3>The Data Lake</h3>
+					
+					<p>HDFS opened up the possibility of massive, distributed storage of data, including multi-structured and unstructured data, which typically would not fit well in a classic data warehouse.</p>
+
+					<p>The data lake provides a central location for historical storage of a broad array of company data for the purpose of data science and machine learning activities.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/warehouse-water.jpg" data-background-opacity="0.2">
+					<h3>The Data Lakehouse</h3>
+					
+					<p>Databricks has coined the term Lakehouse to represent the combination of data warehouse and data lake in one managed area.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>The Data Lakehouse</h3>
+					
+					<img src="presentation/assets/image/data-lakehouse.png" height="350" />
+
+					<p><a href="https://databricks.com/glossary/data-lakehouse">Data Lakehouse</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Modern DW</h3>
+					
+					<img src="presentation/assets/image/06b_ModernDWPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/complexity.jpg" data-background-opacity="0.2">
+					<h3>Graph Databases</h3>
+					
+					<p>Graph databases have a niche in the analytics space.  Graph databases combine <strong>nodes</strong> (which represent entities) and <strong>edges</strong> (which represent connections between entities).</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/jump.jpg" data-background-opacity="0.2">
+					<h3>Graph Databases' Wheelhouse</h3>
+					
+					<ul>
+						<li>Path calculation (especially with weights, such as distance between cities)</li>
+						<li>Fraud detection via link analysis:  observe the links between known fraudulent entities and non-marked entities.</li>
+						<li>Modeling fluid relationships between entities.</li>
+						<li>Laying out network maps and other complex topologies.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/surfer-crash.jpg" data-background-opacity="0.2">
+					<h3>The Problem with Graph Databases</h3>
+					
+					<p>The biggest problem with graph databases is that you can do the same things with relational databases, but with only one concept (the relation) versus two (nodes and edges).</p>
+
+					<p>The second-biggest problem with graph databases is that there is no common graph language like SQL or common implementation specs between products.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Graph Databases</h3>
+					
+					<img src="presentation/assets/image/06c_GraphPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/aws-modern-data-warehouse.png" height="450" />
+
+					<p><a href="https://aws.amazon.com/blogs/big-data/how-i-built-a-data-warehouse-using-amazon-redshift-and-aws-services-in-record-time/">Data warehouse with Redshift</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/modern-data-warehouse.png" height="350" />
+
+					<p><a href="https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/modern-data-warehouse">Modern Data Warehouse Architecture</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/hadoop-warehouse.jpg" height="430" />
+
+					<p><a href="https://www.datavirtualizationblog.com/logical-architectures-big-data-analytics/">Logical Architectures for Big Data Analytics</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li class="active">IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Asynchronous message passing:  devices push notifications and let services respond.</li>
+						<li>Separate producers of messages from consumers of messages.</li>
+						<li>Handle large (potentially very large) numbers of messages.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>Message broker</li>
+						<li>Stream processing</li>
+						<li>Long-term storage over HDFS</li>
+						<li>Document or Relational DB for fast data access</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Message Brokers</h3>
+					
+					<p>Message brokers receive messages from <strong>producers</strong> and send messages to <strong>consumers</strong>. They provide a logical disconnect between the two.</p>
+					
+					<img src="presentation/assets/image/Kafka_Overall.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/stream.jpg" data-background-opacity="0.2">
+					<h3>Stream Processing</h3>
+					
+					<p>Stream processing handles messages one at a time (e.g., Kafka Streams, Flink) or in microbatches (Spark Streaming).</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>The Lambda Architecture</h3>
+					
+					<img src="presentation/assets/image/hadoop-lambda.png" height="350" />
+
+					<p><a href="https://www.jamesserra.com/archive/2016/08/what-is-the-lambda-architecture/">What is the Lambda Architecture?</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<img src="presentation/assets/image/hadoop-lambda-2.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<img src="presentation/assets/image/hadoop-lambda-3.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<img src="presentation/assets/image/hadoop-lambda-4.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<img src="presentation/assets/image/hadoop-lambda-5.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<img src="presentation/assets/image/hadoop-lambda-6.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Lambda</h3>
+					
+					<img src="presentation/assets/image/07_StreamPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4" data-markdown>
+					<textarea data-template>
+					### Lambda Pros and Cons
+
+					| Pro | Con |
+					| --- | --- |
+					| Balances speed and reliability | Code replicated in multiple services |
+					| Scales out extremely well | Batch needs full re-processing |
+					| Can solve two different classes of problems | Many working parts |
+					</textarea>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/connected-vehicle-solution-architecture.png" height="450" />
+
+					<p><a href="https://docs.aws.amazon.com/solutions/latest/connected-vehicle-solution/architecture.html">AWS Connected Vehicle Solution</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/iot.png" height="400" />
+
+					<p><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/iot">Azure IoT reference architecture</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li class="active">Logging and Metrics</li>
+						<li>Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/binders.jpg" data-background-opacity="0.2">
+					<h3>Key Requirements</h3>
+					
+					<ul>
+						<li>Need a central source for logging across multiple services.</li>
+						<li>Sometimes logs will follow a specific format, but no guarantee all records have the same shape.</li>
+						<li>Queries are often "What happened at this time?" or "What errors do we see?"</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Key Technologies</h3>
+					
+					<ul>
+						<li>The ELK Stack as a pattern</li>
+							<ul>
+								<li>Log storage:  Elasticsearch</li>
+								<li>Log shipping and event handling:  Logstash</li>
+								<li>Log querying and visualization:  Kibana</li>
+							</ul>
+						<li>Standalone logging services</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/skeleton-thinking.jpg" data-background-opacity="0.2">
+					<h3>Roll Your Own or Purchase?</h3>
+					
+					<p>There are full-service logging solutions, such as Splunk, Datadog, Loggly, and SumoLogic.  These products perform quite well and tend to be accessible for developers and administrators.  The downside is that they tend to be quite expensive.</p>
+
+					<p>On the other side, open source products exist as well and can be quite powerful when used correctly, but the learning curve tends to be much higher.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Logging</h3>
+					
+					<img src="presentation/assets/image/08_LoggingPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/white-wall.jpg" data-background-opacity="0.4">
+					<h3>Reference Architecture</h3>
+					
+					<img src="presentation/assets/image/elk-stack.png" />
+
+					<p><a href="https://logz.io/learn/complete-guide-elk-stack/">The Complete Guide to the ELK Stack</a></p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>An Overview</li>
+						<li>Tracking Finances</li>
+						<li>Product Catalog</li>
+						<li>Busy Website</li>
+						<li>Data Analytics</li>
+						<li>IoT, Real-Time, and Mobile</li>
+						<li>Logging and Metrics</li>
+						<li class="active">Tying it All Together</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/you-are-here.jpg" data-background-opacity="0.2">
+					<h3>Data on the Move</h3>
+					
+					<p>As soon as you have two data platform systems, you introduce the need to combine data.</p>
+
+					<p>There are three major approaches to data movement:  ETL, ELT, and Data Virtualization.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/spiral-staircase.jpg" data-background-opacity="0.2">
+					<h3>ETL to ELT</h3>
+					
+					<p>For a long time, the normal pattern for data movement was Extract-Transform-Load (ETL).  With the massive increase in data sizes, we have seen a move toward Extract-Load-Transform (ELT).</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>ETL to ELT:  the Difference</h3>
+					
+					<p>ETL modifies data during the movement process:  Extract data from a system, Transform it in the mover, and then Load the resulting data into your destination.</p>
+
+					<p>By contrast, with ELT, we Extract data from a system, Load it into a staging area on the destination, and Transform the data into its final form using the destination's compute resources.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  ETL/ELT</h3>
+					
+					<img src="presentation/assets/image/09_ETLPlayers.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Data Virtualization</h3>
+					
+					<p>In addition to moving data from system to system, we can <strong>virtualize</strong> data, making it appear to move while remaining in its current location.  Virtualization tools are commonly third-party products which sit on top of several data platform technologies and offer a "single pane of glass" view of databases.  Functionality typically includes the ability to join between sources.</p>
+
+					<p>The downside to virtualization is that performance typically suffers with larger sets of data.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Data Virtualization</h3>
+					
+					<ul>
+						<li>Actifio</li>
+						<li>Denodo</li>
+						<li>IBM Cloud Pak</li>
+						<li>Informatica PowerCenter</li>
+						<li>Oracle Data Service Integrator</li>
+						<li>Starburst Presto</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/connections.jpg" data-background-opacity="0.2">
+					<h3>PolyBase</h3>
+					
+					<p>SQL Server 2019 extends a Microsoft technology called PolyBase, which allows you to virtualize data from a number of different data platform technologies, including Hadoop, Azure Blob Storage, SQL Server, Oracle, MongoDB, Cosmos DB, Spark, DB/2, Excel, and more.</p>
+
+					<p>For more, go to <a href="https://csmore.info/on/polybase">https://csmore.info/on/polybase</a>.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>PolyBase and ELT</h3>
+					
+					<p>One difference between PolyBase and other data virtualization products is that PolyBase enables ELT into SQL Server.  You can create an external table from a remote data source and use that to land data into SQL Server.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/wrappingup.jpg" data-background-opacity="0.2">
+					<h3>Wrapping Up</h3>
+					
+					<p>This has been a look at the data platform space as it stands.  This is a fast-changing field with interesting competitors entering and leaving the market regularly.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/wrappingup.jpg" data-background-opacity="0.2">
+					<h3>Wrapping Up</h3>
+					
+					<p>
+						To learn more, go here:
+						<br />
+						<a href="https://csmore.info/on/cdp">https://CSmore.info/on/cdp</a>
+					</p>
+					<br />
+					<p>
+						And for help, contact me:
+						<br />
+						<a href="mailto:feasel@catallaxyservices.com">feasel@catallaxyservices.com</a> | <a href="https://www.twitter.com/feaselkl">@feaselkl</a>
+					</p>
+					<br />
+					<p>
+						Catallaxy Services consulting:
+						<br />
+						<a href="https://csmore.info/contact">https://CSmore.info/on/contact</a>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/zoom/zoom.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/search/search.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
+		<script src="../reveal.js/plugin/menu/menu.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/chart/Chart.min.js"></script>
+		<script src="../reveal.js/plugin/chart/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				width: '70%',
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				transition: 'fade',
+				
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath, RevealMenu, RevealChart ]
+			});
+		</script>
+	</body>
+</html>
