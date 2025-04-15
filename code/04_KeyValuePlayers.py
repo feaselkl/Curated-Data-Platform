@@ -22,7 +22,7 @@ with Diagram("", show=False, direction="TB", node_attr=node_attr):
 
     with Cluster("Cloud", graph_attr=graph_attr):
         with Cluster("Azure", graph_attr=graph_attr):
-                azure = [SQLDatabases("\nSQL DB")] >> CacheForRedis("\nRedis") >> BlobStorage("\nBlob Storage")
+                azure = BlobStorage("\nBlob Storage") >> SQLDatabases("\nSQL DB") >> CacheForRedis("\nRedis")
         with Cluster("AWS", graph_attr=graph_attr):
-            aws = [RDS("\nRDS")] >> Elasticache("\nElasticache") >> S3("\nS3")
+            aws = S3("\nS3") >> RDS("\nRDS") >> Elasticache("\nElasticache")
         
