@@ -19,7 +19,7 @@
 			<div class="slides">
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h2>The Curated Data Platform</h2>
-					<h3>Last Revision:  May 2025</h3>
+					<h3>Last Revision:  March 2026</h3>
 					
 					<a href="https://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)<br />
 					<a href="http://CSmore.info/on/cdp">http://CSmore.info/on/cdp</a>
@@ -184,15 +184,26 @@
 					</ul>
 				</section>
 				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Recent Developments:  OLTP</h3>
+
+					<ul>
+						<li><strong>PostgreSQL 18</strong> (September 2025): Async I/O subsystem (up to 3&times; faster reads), virtual generated columns, native <code>uuidv7()</code>, OAuth 2.0.</li>
+						<li><strong>MySQL 8.0 EOL</strong>: Support ends April 30, 2026 &mdash; upgrade to MySQL 8.4+ or 9.x.</li>
+						<li><strong>SQL Server 2025</strong>: Native vector data type, DiskANN indexes, native JSON (up to 2 GB/row), built-in regex.</li>
+						<li><strong>Azure HorizonDB</strong> (preview): New PostgreSQL-compatible managed service competing with AWS Aurora and Google AlloyDB.</li>
+					</ul>
+				</section>
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Key Players:  OLTP</h3>
-					
+
 					<img src="presentation/assets/image/01_OLTPPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Agenda</h3>
-					
+
 					<ol>
 						<li>An Overview</li>
 						<li>Relational Databases</li>
@@ -277,10 +288,16 @@
 
 				<section data-background-image="presentation/assets/background/warehouse-water.jpg" data-background-opacity="0.2">
 					<h3>The Data Lakehouse</h3>
-					
+
 					<p>Databricks coined the term Lakehouse to represent the combination of data warehouse and data lake in one managed area.</p>
 
 					<p>Since then, we've seen platforms like Databricks, Snowflake, and Microsoft Fabric move quickly in this space.</p>
+
+					<ul>
+						<li><strong>Microsoft Fabric</strong>: 28,000+ organizations including 80% of Fortune 500 as of 2025.</li>
+						<li><strong>Snowflake</strong>: $3.5B FY2025 revenue (30% growth); $100M+ quarterly AI revenue run rate.</li>
+						<li><strong>Databricks</strong>: Entered DB-Engines Top 10; IDC MarketScape Leader for Unified AI Governance 2025&ndash;2026.</li>
+					</ul>
 				</section>
 				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -351,15 +368,24 @@
 					</ul>
 				</section>
 				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Recent Developments:  Document DBs</h3>
+
+					<ul>
+						<li><strong>MongoDB</strong> acquired <strong>Voyage AI</strong> (February 2026) to improve embedding models and reduce LLM hallucinations &mdash; positioning MongoDB as mission-critical AI infrastructure. MongoDB Atlas now represents 75% of MongoDB revenue (up from 66%).</li>
+						<li><strong>Amazon DynamoDB</strong> market mindshare declined significantly year-over-year (10.6%, down from 18.6%) as customers consolidate onto lakehouse platforms.</li>
+					</ul>
+				</section>
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Key Players:  Document DBs</h3>
-					
+
 					<img src="presentation/assets/image/03_DocumentPlayers.png" height="500" />
 				</section>
-				
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Reference Architecture</h3>
-					
+
 					<img src="presentation/assets/image/product-catalog.png" height="350" /><br />
 
 					<p><a href="https://docs.microsoft.com/en-us/azure/cosmos-db/use-cases#retail-and-marketing">Cosmos DB Use Case:  Retail and marketing</a></p>
@@ -417,15 +443,25 @@
 					</textarea>
 				</section>
 				
+				<section data-background-image="presentation/assets/background/surfer-crash.jpg" data-background-opacity="0.2">
+					<h3>A Note on Redis Licensing</h3>
+
+					<p>In March 2024, Redis switched from BSD to a commercial license (RSALv2/SSPLv1), preventing cloud providers from offering it as a managed service without approval.</p>
+
+					<p>This triggered the creation of <strong>Valkey</strong>, a fully open-source (BSD-licensed) Redis fork backed by AWS, Google Cloud, Oracle, Ericsson, and Snap. Valkey is now the de facto open-source alternative.</p>
+
+					<p>Redis added AGPLv3 as a third option in May 2025, but licensing uncertainty in the community remains. Consider Valkey for new open-source deployments.</p>
+				</section>
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Key Players:  Key-Value Caches</h3>
-					
+
 					<img src="presentation/assets/image/04_KeyValuePlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Reference Architecture</h3>
-					
+
 					<img src="presentation/assets/image/scalable-web-app.png" height="350" />
 
 					<p><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app">Scalable web application</a></p>
@@ -480,12 +516,12 @@
 
 				<section data-background-image="presentation/assets/background/no-parking.jpg" data-background-opacity="0.1">
 					<h3>Accept No Substitutes</h3>
-					
-					<p>If you do go with a graph database, Neo4j is likely to be your best bet by far.</p>
 
-					<p>There are some very small graph database products that I would avoid simply because of how little market share they hold,
-						as well as some products that half-heartedly offer graph support (looking at you, SQL Server!), but
-						none of them provide much in this space. In the cloud, AWS Neptune is fine but I'd shy away from Cosmos DB.</p>
+					<p>If you do go with a graph database, Neo4j is likely to be your best bet by far. Most other players tend to fade away with little market share.</p>
+
+					<p>Some products (e.g., SQL Server) offer limited graph capabilities, but they are not as mature or feature-rich as dedicated graph databases.</p>
+
+					<p>AWS Neptune is fine. Avoid Gremlinf for Cosmos DB. Graph in Fabric is in early preview and not worth considering for production use at this time.</p>
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -526,15 +562,24 @@
 					</ul>
 				</section>
 				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>Recent Developments:  Time Series</h3>
+
+					<ul>
+						<li><strong>InfluxDB 3.0</strong> (GA: April 2025): Complete rewrite in Rust, built on Apache Arrow, DataFusion, and Parquet. Delivers 10&ndash;20&times; compression vs. 2&ndash;3&times; in InfluxDB 2.x. Adds <strong>native SQL support</strong> alongside InfluxQL, a fundamental architectural change.</li>
+						<li><strong>TimescaleDB 2.25</strong> (January 2026): Full PostgreSQL 18 support, columnar index scan for accelerated aggregates, UUIDv7 compression (30% storage savings, 2&times; faster queries).</li>
+					</ul>
+				</section>
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Key Players:  Time Series DBs</h3>
-					
+
 					<img src="presentation/assets/image/06_TimeSeriesPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Agenda</h3>
-					
+
 					<ol>
 						<li>An Overview</li>
 						<li>Relational Databases</li>
@@ -591,15 +636,29 @@
 					<img src="presentation/assets/image/CosineSimilarity.png" />
 				</section>
 				
+				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
+					<h3>The Shifting Vector DB Landscape</h3>
+
+					<p>Traditional relational databases are rapidly integrating native vector capabilities, narrowing the gap with purpose-built vector databases:</p>
+
+					<ul>
+						<li><strong>PostgreSQL + pgvector</strong>: Faster than Qdrant, competitive with Pinecone. <strong>PostgreSQL 18</strong> adds a native vector data type with full SQL operations.</li>
+						<li><strong>SQL Server 2025</strong>: Native vector type + DiskANN indexes.</li>
+						<li><strong>Oracle AI Database 26ai</strong>: Native vector search and autonomous AI lakehouse.</li>
+					</ul>
+
+					<p><em>Before adopting a purpose-built vector database, evaluate whether your existing relational database can meet your scale requirements.</em></p>
+				</section>
+
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Key Players:  Vector DBs</h3>
-					
+
 					<img src="presentation/assets/image/07_VectorPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Agenda</h3>
-					
+
 					<ol>
 						<li>An Overview</li>
 						<li>Relational Databases</li>
@@ -639,10 +698,12 @@
 				
 				<section data-background-image="presentation/assets/background/skeleton-thinking.jpg" data-background-opacity="0.2">
 					<h3>Roll Your Own or Purchase?</h3>
-					
-					<p>There are full-service logging solutions, such as Splunk, Datadog, Loggly, and SumoLogic. These products perform quite well and tend to be accessible for developers and administrators.  The downside is that they tend to be quite expensive.</p>
+
+					<p>There are full-service logging solutions, such as <strong>Cisco Splunk</strong> (acquired by Cisco for ~$28B in March 2024), Datadog, Loggly, and SumoLogic. These products perform quite well and tend to be accessible for developers and administrators. The downside is that they tend to be quite expensive.</p>
 
 					<p>On the other side, open source products exist as well and can be quite powerful when used correctly, but the learning curve tends to be much higher.</p>
+
+					<p><strong>OpenTelemetry</strong> is rapidly becoming the standard for telemetry collection, with Database Semantic Conventions now stable and CNCF Graduated status expected in 2026. The Grafana LGTM stack (Loki, Grafana, Tempo, Mimir) now provides full observability in a single Docker container.</p>
 				</section>
 				
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">

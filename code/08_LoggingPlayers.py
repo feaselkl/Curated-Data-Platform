@@ -1,5 +1,8 @@
+import os
 from diagrams import Cluster, Diagram, Edge
 from diagrams.onprem.logging import Loki
+
+_dir = os.path.dirname(os.path.abspath(__file__))
 from diagrams.onprem.aggregator import Fluentd
 from diagrams.elastic.elasticsearch import Logstash, Elasticsearch, Kibana
 from diagrams.onprem.search import Solr
@@ -15,7 +18,8 @@ graph_attr = {
     "fontsize":"28"
 }
 
-with Diagram("", show=False, node_attr=node_attr):
+with Diagram("", show=False, node_attr=node_attr,
+             filename=os.path.join(_dir, "..", "presentation", "assets", "image", "08_LoggingPlayers")):
     with Cluster("Log Aggregation", graph_attr=graph_attr):
         logstash = Logstash("\nLogstash")
         fluentd = Fluentd("\nFluentd")
