@@ -242,7 +242,7 @@
 					<ul>
 						<li>Specifically, the Kimball model for warehousing.</li>
 						<li>The data must be correct but does not need to be "real-time."  We can use an ETL process to populate the warehouse.</li>
-						<li>It is possible to distribute data marts geographically to meet the performance needs of analysts, along with a central data warehouse to store the full set of data.</li>
+						<li>We can distribute data marts geographically to meet the performance needs of analysts while maintaining a central data warehouse to store the full set of data.</li>
 						<li>Microsoft and other major players build their BI tools like (Excel, Power Query, etc.) to work best with Kimball-style warehouses.</li>
 					</ul>
 				</section>
@@ -272,7 +272,7 @@
 				<section data-background-image="presentation/assets/background/warehouse.jpg" data-background-opacity="0.2">
 					<h3>Modern Data Warehousing</h3>
 					
-					<p>Apache Hadoop turned the data warehousing and analytics world upside-down. Although it is now a legacy platform, some of its progeny live on, in the form of distributed storage in a data lake, the Apache Spark platform, and Apache Kafka.</p>
+					<p>Apache Hadoop turned the data warehousing and analytics world upside-down. Although it is now a legacy platform, some of its progeny live on in the form of distributed storage in a data lake, the Apache Spark platform, and Apache Kafka.</p>
 				</section>
 
 				<section data-background-image="presentation/assets/background/lake.jpg" data-background-opacity="0.2">
@@ -361,7 +361,7 @@
 					<ul>
 						<li>Key-value store</li>
 						<li>The value is a complex document, often JSON (or JSON-like)</li>
-						<li>The value may be nested:  <code>Product</code> has <code>Images</code>, <code>PriceChanges</code>, and <code>StoreAvailability</code> as well as attributes like <code>Price</code>, <code>Title</code>, and <code>Brand</code></li>
+						<li>The value may include nested objects:  <code>Product</code> has <code>Images</code>, <code>PriceChanges</code>, and <code>StoreAvailability</code> as well as attributes like <code>Price</code>, <code>Title</code>, and <code>Brand</code></li>
 						<li>Data retrieval is typically one record at a time, but allows for scans of data</li>
 					</ul>
 				</section>
