@@ -55,7 +55,7 @@
 				<section data-background-image="presentation/assets/background/questions.jpg" data-background-opacity="0.2">
 					<h3>Which data platform is right for me?</h3>
 					
-					<p>The website <a href="https://db-engines.com/en/ranking">DB-Engines</a> keeps track of over 400 different data platform technologies, ranging from relational databases to data warehouses, document databases, key-value stores, search engines, time series, graph databases, and more.</p>
+					<p><a href="https://db-engines.com/en/ranking">DB-Engines</a> keeps track of over 400 different data platform technologies. These include relational databases, data warehouses, document databases, key-value stores, search engines, time-series databases, graph databases, and more.</p>
 				</section>
 				
 				<section data-background-image="presentation/assets/background/motivation.jpg" data-background-opacity="0.2">
@@ -81,7 +81,7 @@
 				<section data-background-image="presentation/assets/background/contract2.jpg" data-background-opacity="0.2">
 					<h3>A(nother) Brief Warning</h3>
 					
-					<p>I have specific biases. I've worked primarily in the Microsoft data platform space, so most of my personal experience is in that stack, as well as offerings in AWS and Azure.</p>
+					<p>I have specific biases. I've worked primarily in the Microsoft data platform space, so most of my personal experience is in that stack, as well as offerings in AWS and Azure. I have no GCP experience.</p>
 
 					<p>Aside from that, I have a bias for open-source technologies over commercial platforms.</p>
 
@@ -117,7 +117,7 @@
 						But imagine some sample complaints that you might hear in your own jobs.</p>
 
 					<ul>
-						<li>Finances in Excel spreadsheets is clunky.</li>
+						<li>Storing all of our financial data in Excel spreadsheets is clunky.</li>
 						<li>Product searches take too long on our website.</li>
 						<li>Customers experience slowness making orders.</li>
 						<li>No support for the data science team.</li>
@@ -222,7 +222,7 @@
 					
 					<ul>
 						<li>Data MUST be correct.  We need business users to be able to trust our data.</li>
-						<li>Systems should be easy for non-IT staff to access, ideally within Excel.</li>
+						<li>Non-IT staff should be able to access systems, ideally within Excel.</li>
 						<li>It's okay for some reports to update nightly rather than real-time.</li>
 						<li>Performance is less critical than correctness, but still an important factor.</li>
 					</ul>
@@ -241,9 +241,9 @@
 					
 					<ul>
 						<li>Specifically, the Kimball model for warehousing.</li>
-						<li>The data must be correct but may be delayed.  We can use an ETL process to populate the warehouse.</li>
-						<li>Data marts may be distributed across the globe to meet the performance needs of analysts, along with a central data warehouse to store the full set of data.</li>
-						<li>Excel tools like Power Query are designed to work with Kimball-style warehouses.</li>
+						<li>The data must be correct but does not need to be "real-time."  We can use an ETL process to populate the warehouse.</li>
+						<li>It is possible to distribute data marts geographically to meet the performance needs of analysts, along with a central data warehouse to store the full set of data.</li>
+						<li>Microsoft and other major players build their BI tools like (Excel, Power Query, etc.) to work best with Kimball-style warehouses.</li>
 					</ul>
 				</section>
 				
@@ -278,9 +278,7 @@
 				<section data-background-image="presentation/assets/background/lake.jpg" data-background-opacity="0.2">
 					<h3>The Data Lake</h3>
 					
-					<p>The Hadoop Distributed File System and subsequent cloud storage platforms like Amazon's S3 and Azure Blob Storage
-						opened up the possibility of massive, distributed storage of data, including multi-structured and unstructured data, 
-						which typically would not fit well in a classic data warehouse.</p>
+					<p>The Hadoop Distributed File System (HDFS) opened up the possibility of massive, distributed data storage. Cloud storage platforms like Amazon's S3 and Azure Blob Storage made this a practical reality. This data includes multi-structured and unstructured data, which typically would not fit well in a classic data warehouse.</p>
 
 					<p>The data lake provides a central location for historical storage of a broad array of company data for the purpose of 
 						data science and machine learning activities.</p>
@@ -372,7 +370,7 @@
 					<h3>Recent Developments:  Document DBs</h3>
 
 					<ul>
-						<li><strong>MongoDB</strong> acquired <strong>Voyage AI</strong> (February 2026) to improve embedding models and reduce LLM hallucinations &mdash; positioning MongoDB as mission-critical AI infrastructure. MongoDB Atlas now represents 75% of MongoDB revenue (up from 66%).</li>
+						<li><strong>MongoDB</strong> acquired <strong>Voyage AI</strong> (February 2026) to improve embedding models and reduce LLM hallucinations. MongoDB Atlas now represents 75% of MongoDB revenue (up from 66%).</li>
 						<li><strong>Amazon DynamoDB</strong> market mindshare declined significantly year-over-year (10.6%, down from 18.6%) as customers consolidate onto lakehouse platforms.</li>
 					</ul>
 				</section>
@@ -448,7 +446,7 @@
 
 					<p>In March 2024, Redis switched from BSD to a commercial license (RSALv2/SSPLv1), preventing cloud providers from offering it as a managed service without approval.</p>
 
-					<p>This triggered the creation of <strong>Valkey</strong>, a fully open-source (BSD-licensed) Redis fork backed by AWS, Google Cloud, Oracle, Ericsson, and Snap. Valkey is now the de facto open-source alternative.</p>
+					<p>This triggered the creation of <strong>Valkey</strong>, a fully open-source (BSD-licensed) Redis fork that organizations like AWS, Google Cloud, Oracle, Ericsson, and Snap support. Valkey is now the de facto open-source alternative.</p>
 
 					<p>Redis added AGPLv3 as a third option in May 2025, but licensing uncertainty in the community remains. Consider Valkey for new open-source deployments.</p>
 				</section>
@@ -517,11 +515,11 @@
 				<section data-background-image="presentation/assets/background/no-parking.jpg" data-background-opacity="0.1">
 					<h3>Accept No Substitutes</h3>
 
-					<p>If you do go with a graph database, Neo4j is likely to be your best bet by far. Most other players tend to fade away with little market share.</p>
+					<p>If you do go with a graph database, Neo4j is the only one I can heartily recommend. Most other players tend to fade away with little market share.</p>
 
 					<p>Some products (e.g., SQL Server) offer limited graph capabilities, but they are not as mature or feature-rich as dedicated graph databases.</p>
 
-					<p>AWS Neptune is fine. Avoid Gremlinf for Cosmos DB. Graph in Fabric is in early preview and not worth considering for production use at this time.</p>
+					<p>AWS Neptune is fine. Avoid Gremlin for Cosmos DB. Graph in Fabric is in early preview and not worth considering for production use at this time.</p>
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -544,7 +542,7 @@
 					<h3>Key Requirements</h3>
 					
 					<ul>
-						<li>Data is time-sequenced and we care about analyzing relevant data over time.</li>
+						<li>Data has a time element and we care about analyzing relevant data over time.</li>
 						<li>Data ingestion rates are very high, perhaps as high as millions of data points per second.</li>
 						<li>Most reports and dashboards need to aggregate and downsample data, showing trends over time periods (e.g., hourly, daily, weekly, monthly).</li>
 					</ul>
@@ -554,7 +552,7 @@
 					<h3>Key Features of Time Series Databases</h3>
 					
 					<ul>
-						<li>Time is a first-class citizen--indexing is based on timestamp.</li>
+						<li>Time is a first-class citizen--we index based on timestamp.</li>
 						<li>Specialized compression algorithms compact data points more efficiently than generic databases.</li>
 						<li>Automated retention policies delete older data.</li>
 						<li>Automated downsampling rolls up data points to reduce disk space requirements.</li>
@@ -566,7 +564,7 @@
 					<h3>Recent Developments:  Time Series</h3>
 
 					<ul>
-						<li><strong>InfluxDB 3.0</strong> (GA: April 2025): Complete rewrite in Rust, built on Apache Arrow, DataFusion, and Parquet. Delivers 10&ndash;20&times; compression vs. 2&ndash;3&times; in InfluxDB 2.x. Adds <strong>native SQL support</strong> alongside InfluxQL, a fundamental architectural change.</li>
+						<li><strong>InfluxDB 3.0</strong> (GA: April 2025): Complete rewrite in Rust, with a foundation of Apache Arrow, DataFusion, and Parquet. Delivers 10&ndash;20&times; compression vs. 2&ndash;3&times; in InfluxDB 2.x. Adds <strong>native SQL support</strong> alongside InfluxQL, a fundamental architectural change.</li>
 						<li><strong>TimescaleDB 2.25</strong> (January 2026): Full PostgreSQL 18 support, columnar index scan for accelerated aggregates, UUIDv7 compression (30% storage savings, 2&times; faster queries).</li>
 					</ul>
 				</section>
@@ -699,7 +697,7 @@
 				<section data-background-image="presentation/assets/background/skeleton-thinking.jpg" data-background-opacity="0.2">
 					<h3>Roll Your Own or Purchase?</h3>
 
-					<p>There are full-service logging solutions, such as <strong>Cisco Splunk</strong> (acquired by Cisco for ~$28B in March 2024), Datadog, Loggly, and SumoLogic. These products perform quite well and tend to be accessible for developers and administrators. The downside is that they tend to be quite expensive.</p>
+					<p>There are full-service logging solutions, such as <strong>Cisco Splunk</strong> (Cisco acquired for ~$28B in March 2024), Datadog, Loggly, and SumoLogic. These products perform quite well and tend to be accessible for developers and administrators. The downside is that they tend to be quite expensive.</p>
 
 					<p>On the other side, open source products exist as well and can be quite powerful when used correctly, but the learning curve tends to be much higher.</p>
 				</section>
