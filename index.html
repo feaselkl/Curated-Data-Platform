@@ -51,6 +51,22 @@
 						</div>					
 					</div>
 				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li class="active">An Overview</li>
+						<li>Relational Databases</li>
+						<li>Data Warehousing (Classic and Modern)</li>
+						<li>Document Databases</li>
+						<li>Key-Value Stores</li>
+						<li>Graph Databases</li>
+						<li>Time Series Databases</li>
+						<li>Vector Databases</li>
+						<li>Log Storage</li>
+					</ol>
+				</section>
 				
 				<section data-background-image="presentation/assets/background/questions.jpg" data-background-opacity="0.2">
 					<h3>Which data platform is right for me?</h3>
@@ -87,45 +103,6 @@
 
 					<p>I will try to make it clear in this talk when I'm being biased.</p>
 				</section>
-				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Agenda</h3>
-					
-					<ol>
-						<li class="active">An Overview</li>
-						<li>Relational Databases</li>
-						<li>Data Warehousing (Classic and Modern)</li>
-						<li>Document Databases</li>
-						<li>Key-Value Stores</li>
-						<li>Graph Databases</li>
-						<li>Time Series Databases</li>
-						<li>Vector Databases</li>
-						<li>Log Storage</li>
-					</ol>
-				</section>
-				
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>An Example System in Place</h3>
-					
-					<img src="presentation/assets/image/Current%20Architecture.png" />
-				</section>
-				
-				<section data-background-image="presentation/assets/background/ugh.jpg" data-background-opacity="0.2">
-					<h3>Thoughts on the System in Place</h3>
-					
-					<p>Many companies have one database platform, plus Excel (or Google Sheets, etc.). If that's good enough for your company, great!
-						But imagine some sample complaints that you might hear in your own jobs.</p>
-
-					<ul>
-						<li>Storing all of our financial data in Excel spreadsheets is clunky.</li>
-						<li>Product searches take too long on our website.</li>
-						<li>Customers experience slowness making orders.</li>
-						<li>No support for the data science team.</li>
-						<li>Log review is painful for IT.</li>
-					</ul>
-
-					<p>Other data platform technologies <strong>may</strong> mitigate these pain points--while introducing new pain points along the way.</p>
-				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Regarding Multiple Systems</h3>
@@ -139,7 +116,7 @@
 					<p>Like power tools, data platform technologies have their specific use cases. Some of them are more versatile than others, but if you pick up the wrong tool for the job, you may struggle to get it done.</p>
 
 					<p>Over the rest of this session, I'll help you understand how to select the right tools for the job.</p>
-				</section>
+				</section>				
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
 					<h3>Agenda</h3>
@@ -183,7 +160,13 @@
 						<li>Performance will generally be good, though analysts far from the data center may need to deal with slower queries.</li>
 					</ul>
 				</section>
-				
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  OLTP</h3>
+
+					<img src="presentation/assets/image/01_OLTPPlayers.png" height="500" />
+				</section>
+
 				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
 					<h3>Recent Developments:  OLTP</h3>
 
@@ -193,12 +176,6 @@
 						<li><strong>SQL Server 2025</strong>: Native vector data type, DiskANN indexes, native JSON (up to 2 GB/row), built-in regex.</li>
 						<li><strong>Azure HorizonDB</strong> (preview): New PostgreSQL-compatible managed service competing with AWS Aurora and Google AlloyDB.</li>
 					</ul>
-				</section>
-
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Key Players:  OLTP</h3>
-
-					<img src="presentation/assets/image/01_OLTPPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -365,7 +342,13 @@
 						<li>Data retrieval is typically one record at a time, but allows for scans of data</li>
 					</ul>
 				</section>
-				
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Document DBs</h3>
+
+					<img src="presentation/assets/image/03_DocumentPlayers.png" height="500" />
+				</section>
+
 				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
 					<h3>Recent Developments:  Document DBs</h3>
 
@@ -373,12 +356,6 @@
 						<li><strong>MongoDB</strong> acquired <strong>Voyage AI</strong> (February 2026) to improve embedding models and reduce LLM hallucinations. MongoDB Atlas now represents 75% of MongoDB revenue (up from 66%).</li>
 						<li><strong>Amazon DynamoDB</strong> market mindshare declined significantly year-over-year (10.6%, down from 18.6%) as customers consolidate onto lakehouse platforms.</li>
 					</ul>
-				</section>
-
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Key Players:  Document DBs</h3>
-
-					<img src="presentation/assets/image/03_DocumentPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -440,7 +417,13 @@
 					| Best Use | Dictionary | Serialized Object |
 					</textarea>
 				</section>
-				
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Key-Value Caches</h3>
+
+					<img src="presentation/assets/image/04_KeyValuePlayers.png" height="500" />
+				</section>
+
 				<section data-background-image="presentation/assets/background/surfer-crash.jpg" data-background-opacity="0.2">
 					<h3>A Note on Redis Licensing</h3>
 
@@ -449,12 +432,6 @@
 					<p>This triggered the creation of <strong>Valkey</strong>, a fully open-source (BSD-licensed) Redis fork that organizations like AWS, Google Cloud, Oracle, Ericsson, and Snap support. Valkey is now the de facto open-source alternative.</p>
 
 					<p>Redis added AGPLv3 as a third option in May 2025, but licensing uncertainty in the community remains. Consider Valkey for new open-source deployments.</p>
-				</section>
-
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Key Players:  Key-Value Caches</h3>
-
-					<img src="presentation/assets/image/04_KeyValuePlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -559,7 +536,13 @@
 						<li>Query syntax enhancements focus on time series questions such as moving average, rate calculations, anomaly detection, and interval calculation.</li>
 					</ul>
 				</section>
-				
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Time Series DBs</h3>
+
+					<img src="presentation/assets/image/06_TimeSeriesPlayers.png" height="500" />
+				</section>
+
 				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
 					<h3>Recent Developments:  Time Series</h3>
 
@@ -567,12 +550,6 @@
 						<li><strong>InfluxDB 3.0</strong> (GA: April 2025): Complete rewrite in Rust, with a foundation of Apache Arrow, DataFusion, and Parquet. Delivers 10&ndash;20&times; compression vs. 2&ndash;3&times; in InfluxDB 2.x. Adds <strong>native SQL support</strong> alongside InfluxQL, a fundamental architectural change.</li>
 						<li><strong>TimescaleDB 2.25</strong> (January 2026): Full PostgreSQL 18 support, columnar index scan for accelerated aggregates, UUIDv7 compression (30% storage savings, 2&times; faster queries).</li>
 					</ul>
-				</section>
-
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Key Players:  Time Series DBs</h3>
-
-					<img src="presentation/assets/image/06_TimeSeriesPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
@@ -633,25 +610,23 @@
 					
 					<img src="presentation/assets/image/CosineSimilarity.png" />
 				</section>
-				
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Key Players:  Vector DBs</h3>
+
+					<img src="presentation/assets/image/07_VectorPlayers.png" height="500" />
+				</section>
+
 				<section data-background-image="presentation/assets/background/circuitboards.jpg" data-background-opacity="0.2">
 					<h3>The Shifting Vector DB Landscape</h3>
 
 					<p>Traditional relational databases are rapidly integrating native vector capabilities, narrowing the gap with purpose-built vector databases:</p>
 
 					<ul>
-						<li><strong>PostgreSQL + pgvector</strong>: Faster than Qdrant, competitive with Pinecone. <strong>PostgreSQL 18</strong> adds a native vector data type with full SQL operations.</li>
+						<li><strong>PostgreSQL + pgvector</strong>: Faster than Qdrant, competitive with Pinecone.</li>
 						<li><strong>SQL Server 2025</strong>: Native vector type + DiskANN indexes.</li>
 						<li><strong>Oracle AI Database 26ai</strong>: Native vector search and autonomous AI lakehouse.</li>
 					</ul>
-
-					<p><em>Before adopting a purpose-built vector database, evaluate whether your existing relational database can meet your scale requirements.</em></p>
-				</section>
-
-				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
-					<h3>Key Players:  Vector DBs</h3>
-
-					<img src="presentation/assets/image/07_VectorPlayers.png" height="500" />
 				</section>
 
 				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
